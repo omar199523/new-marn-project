@@ -1,0 +1,20 @@
+#test get Goals
+# GET http://localhost:5000/api/goals/
+
+#test add Goals
+# POST http://localhost:5000/api/goals/ HTTP/1.1
+# content-type: application/json
+
+# {
+#     "text":"asfsdfghdfh"
+# }
+
+#test delete Goals
+# DELETE  http://localhost:5000/api/goals/6278e861f3b68ef00573d569
+
+# PUT  http://localhost:5000/api/goals/627646284b3659bfe0957cb5 HTTP/1.1
+# content-type: application/json
+
+# {
+#     "text":"omar muhammed"
+# }
