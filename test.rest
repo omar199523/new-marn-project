@@ -18,3 +18,9 @@
 # {
 #     "text":"omar muhammed"
 # }
+
+# GET http://localhost:5000/api/member/
+
+# GET http://localhost:5000/api/member/me
+
+GET http://localhost:5000/api/financial/

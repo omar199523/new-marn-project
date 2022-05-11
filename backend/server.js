@@ -12,6 +12,8 @@ app.use(express.urlencoded({extended :false}));
 app.use(errorHandler);
 
 app.use('/api/goals',require('./routes/goalsRoutes'))
+app.use('/api/member',require('./routes/memberRoutes'))
+app.use('/api/financial',require('./routes/financialRoutes'))
 
 
 
