@@ -19,6 +19,7 @@
 #     "text":"omar muhammed"
 # }
 
+<<<<<<< HEAD
 
 POST http://localhost:8000/api/user/ HTTP/1.1
 content-type: application/json
@@ -28,3 +29,10 @@ content-type: application/json
     "email":"model199523@gmail.com",
     "password":"0595288061"
 }
+=======
+# GET http://localhost:5000/api/member/
+
+# GET http://localhost:5000/api/member/me
+
+GET http://localhost:5000/api/financial/
+>>>>>>> f62187949c70f43783e432fa8df937f050579e12
