@@ -47,8 +47,9 @@ const financialFile = mongoose.Schema({
         required:[true,"please enter notbook No."]
     },
     userId:{
-        type:"String",
-        required:[true,"please enter userId"]
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:"User"
     }
 },{
     timestamps:true

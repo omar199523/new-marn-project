@@ -1,5 +1,7 @@
 const asyncHandler = require('express-async-handler');
-const Member = require('../models/memberModel')
+const Member = require('../models/memberModel');
+const Users = require('../models/userModel');
+const {canView} = require('../permissions/member');
 //@desc Get member to admin
 //@route GET /api/member
 //@access Privat
@@ -9,10 +11,10 @@ const getAllMember = asyncHandler(async (req,res)=>{
     res.status(200)
     .json(member);
 })
+
 //@desc get me
 //@route GET /api/member/me
 //@access Privat
-
 const getMe = asyncHandler(async (req,res)=>{
     const member = await Member.find({});
     res.status(200).json(member);
@@ -27,14 +29,24 @@ const addMe = asyncHandler(async (req,res)=>{
 //@route POST /api/member
 //@access Privat
 const addMember = asyncHandler(async (req,res)=>{
-    res.status(200).json({massage:"add my date"})
+    const {memberNumber,arabicName} =req.body;
+    const {_id} = await Users.findById(req.user.id);
+    const member = await Member.create({
+        arabicName,
+        memberNumber,
+        userId:_id
+    })
+    res.status(200).json(member)
 })
 
 //@desc edit member in admin
 //@route put /api/member
 //@access Privat
 const editMember = asyncHandler(async (req,res)=>{
-    res.status(200).json({massage:"edit member in admin"})
+    const {arabicName,memberNumber} = req.body;
+    const member = await Member.findByIdAndUpdate(req.params.id,req.body,{new:true});
+
+    res.status(200).json(member);
 })
 
 //@desc edit member in admin
@@ -48,8 +60,19 @@ const editMe = asyncHandler(async (req,res)=>{
 //@route GET /api/member
 //@access Privat
 const deletMember = asyncHandler(async (req,res)=>{
-    res.status(200).json({massage:"delet member in admin"})
+    const {arabicName,memberNumber} = req.body;
+    const member = await Member.findByIdAndUpdate(req.params.id,req.body,{new:true});
+
+    res.status(200).json(member);
 })
+
+const authGetMember =(req,res,next)=>{
+   if(!canView(req.user,Member)) {
+       res.status(401)
+       throw new Error('your is not autabted or your net added member')
+   }
+   next()
+}
 
 module.exports = {
     getAllMember,
@@ -58,5 +81,6 @@ module.exports = {
     addMember,
     editMember,
     editMe,
-    deletMember
+    deletMember,
+    authGetMember
 }
