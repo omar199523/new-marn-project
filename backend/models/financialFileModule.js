@@ -6,6 +6,10 @@ const financialFile = mongoose.Schema({
         default:new Date().getDate(),
         required:[true,"please enter date"]
     },
+    memberNo:{
+        type:"String",
+        required:[true,"please enter member No."]
+    },
     name:{
         type:"String",
         required:[true,"please enter name"]
@@ -56,3 +60,5 @@ const financialFile = mongoose.Schema({
 });
 
 module.exports = mongoose.model('Financial',financialFile)
+
+

@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 
 
-const member = mongoose.Schema({
-    memberNumber:{
-        type:"String",
-        required:[true,"please enter member number"]
-    },
+const WaitList = mongoose.Schema({
+   
     arabicName:{
         type:"String",
         required:[true,"please enter Arabic Name"]
@@ -85,10 +82,6 @@ const member = mongoose.Schema({
     // GraduationYear:{
     //     type:"String",
     //     required:[true,"please enter Graduation Year"]
-    // },
-    // school:{
-    //     type:"String",
-    //     required:[true,"please enter school"]
     // },
     // school:{
     //     type:"String",
