@@ -11,6 +11,7 @@ router.route('/').post(protect,authRole(ROLE.ADMIN),addMember);
 router.route('/me').post(protect,addMe);
 router.route('/:id').put(protect,authRole(ROLE.ADMIN),editMember);
 router.route('/me/:id').put(protect,editMe);
+
 router.route('/:id').delete(protect,authRole(ROLE.ADMIN),addMember);
 
 
