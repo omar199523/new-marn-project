@@ -13,11 +13,12 @@ const getMovies = asyncHandler( async (req,res) =>{
 //@route POST /api/Movies/
 //@access Private
 const addMovies = asyncHandler( async (req,res) =>{
-    const {date,name} =req.body;
+    const {date,name,rate} =req.body;
 
     const Movies = await Movies.create({
         date,
         name,
+        rate
     })
     if(Movies){
         res.status(200).json(Movies)

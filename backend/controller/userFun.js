@@ -26,7 +26,7 @@ const registerUser = asyncHandler(async (req,res) =>{
         name,
         email,
         password:hashedPassword,
-        role
+        role:role || "USER"
     });
 
     
