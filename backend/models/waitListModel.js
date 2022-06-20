@@ -104,4 +104,4 @@ const WaitList = mongoose.Schema({
 },{
     timestamps:true
 })
-module.exports = mongoose.model("Member", member);
+module.exports = mongoose.model("WaitList", WaitList);

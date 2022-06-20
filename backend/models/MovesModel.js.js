@@ -9,6 +9,12 @@ const movies = mongoose.Schema({
     name:{
         type:"String",
         required:[true,"please enter name"]
+    },describtion:{
+        type:"String",
+        required:[true,"please enter describtion"]
+    },rate:{
+        type:"String",
+        required:[true,"please enter rate"]
     },
 },{
     timestamps:true
