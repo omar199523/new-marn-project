@@ -1,23 +1,24 @@
 const asyncHandler = require('express-async-handler');
 const { json } = require('express/lib/response');
-const Movies = require('../models/MovesModel.js')
+const Movie = require('../models/MovesModel.js')
 
 //@desc Get Movies to adimin
 //@route GET /api/movies
 //@access Private
-const getMovies = asyncHandler( async (req,res) =>{
-    const MoviesFile = Movies.find({})
-    res.status(200) .json(MoviesFile)
+const getMovies= asyncHandler(async (req,res)=>{
+    const movies = await Movie.find({});
+    res.status(200).json(movies);
 })
 //@desc Get Movies to adimin
 //@route POST /api/Movies/
 //@access Private
 const addMovies = asyncHandler( async (req,res) =>{
-    const {date,name,rate} =req.body;
+    const {date,name,describtion,rate} =req.body;
 
-    const Movies = await Movies.create({
+    const Movies = await Movie.create({
         date,
         name,
+        describtion,
         rate
     })
     if(Movies){
@@ -31,12 +32,12 @@ const addMovies = asyncHandler( async (req,res) =>{
 //@route PUT /api/Movies/
 //@access Private
 const editMovies = asyncHandler( async (req,res) =>{
-    const MoviesIsPresant = Movies.findById(req.params.id)
-    if(MoviesIsPresant){
+    const MoviesIsPresant = await Movie.findById(req.params.id)
+    if(!MoviesIsPresant){
         res.status(400)
         throw new Error("Movies Isn’t Presant")
     }
-    const Movies = await Movies.findByIdAndUpdate(req.params.id,req.body,{new:true});
+    const Movies = await Movie.findByIdAndUpdate(req.params.id,req.body,{new:true});
 
     if(Movies){
         res.status(200).json(Movies)
@@ -50,12 +51,12 @@ const editMovies = asyncHandler( async (req,res) =>{
 //@route DELETE /api/Movies/
 //@access Private
 const deleteMovies = asyncHandler( async (req,res) =>{
-    const MoviesIsPresant = Movies.findById(req.params.id)
-    if(MoviesIsPresant){
+    const MoviesIsPresant = await Movie.findById(req.params.id)
+    if(!MoviesIsPresant){
         res.status(400)
         throw new Error("Movies Isn’t Presant")
     }
-    const Movies = await Movies.findByIdAndRemove(req.params.id);
+    const Movies = await Movie.findByIdAndRemove(req.params.id);
 
     if(Movies){
         res.status(200).json(Movies)

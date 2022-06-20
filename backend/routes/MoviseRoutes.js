@@ -6,6 +6,6 @@ const {getMovies,editMovies,deleteMovies,addMovies} = require('../controller/mov
 
 
 router.route('/').get(protect,authRole(ROLE.USER),getMovies).post(protect,authRole(ROLE.USER),addMovies);
-router.route('/').put(protect,authRole(ROLE.USER),editMovies).delete(protect,authRole(ROLE.USER),deleteMovies);
+router.route('/:id').put(protect,authRole(ROLE.USER),editMovies).delete(protect,authRole(ROLE.USER),deleteMovies);
 
 module.exports = router

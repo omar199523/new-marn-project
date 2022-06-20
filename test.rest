@@ -24,11 +24,11 @@
 # POST http://localhost:8000/api/user/ HTTP/1.1
 # content-type: application/json
 
-#  {
-#      "name":"omar",
-#     "email":"mod199523@gmail.com",
-#      "password":"0595288061",
-#  }
+ {
+     "name":"omar",
+    "email":"mod199523@gmail.com",
+     "password":"0595288061",
+ }
 
 # POST http://localhost:8000/api/user/login HTTP/1.1
 # content-type: application/json
