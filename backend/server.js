@@ -16,6 +16,7 @@ app.use('/api/goals',require('./routes/goalsRoutes'))
 app.use('/api/user',require('./routes/userRoutes'))
 app.use('/api/member',require('./routes/memberRoutes'))
 app.use('/api/financial',require('./routes/financialRoutes'))
+app.use('/api/movies',require('./routes/MoviseRoutes'))
 
 
 
